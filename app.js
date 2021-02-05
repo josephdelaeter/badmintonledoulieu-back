@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors')
-const port = process.env.PORT || 3000;
 
 require('dotenv/config');
 
@@ -31,6 +30,6 @@ const connect = mongoose.connect(process.env.DB_CONNECTION, {
         console.log(err);
     });
 
-app.listen(port);
+app.listen(process.env.PORT || 5000)
 
 module.exports=connect
