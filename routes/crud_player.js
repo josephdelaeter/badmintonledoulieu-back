@@ -50,10 +50,10 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
-router.delete('/all', async (req, res) => {
+router.delete('/', async (req, res) => {
     try {
-        const removedAll = await Player.delete()
-        res.json(removedById)
+        const removedAll = await Player.remove()
+        res.json(removedAll)
     } catch (err) {
         res.json({ message: err })
     }

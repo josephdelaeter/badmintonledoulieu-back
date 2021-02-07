@@ -49,6 +49,15 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+router.delete('/', async (req, res) => {
+    try {
+        const removedAll = await Match.remove()
+        res.json(removedAll)
+    } catch (err) {
+        res.json({ message: err })
+    }
+})
+
 router.get('/', async (req, res) => {
     try {
         const match = await Match.find()
