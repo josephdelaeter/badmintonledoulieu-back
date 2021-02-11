@@ -5,7 +5,9 @@ const User = require('../models/user');
 const auth = require('../middleware/auth');
 
 router.post('/signup',userCtrl.signup)
+
 router.post('/login',userCtrl.login)
+
 router.get('/', async (req, res) => {
     try {
         const users = await User.find()

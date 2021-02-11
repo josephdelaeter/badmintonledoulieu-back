@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Player = require('../models/player');
-let connect = require('../app');
 
 router.get('/', async (req, res) => {
     try {
