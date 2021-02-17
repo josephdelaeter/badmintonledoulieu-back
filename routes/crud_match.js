@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
 
-    const postMatch = new Match(req.body);
+    let postMatch = new Match(req.body);
 
     const scoreTab = [req.body.Score1, req.body.Score2, req.body.Score3];
 
@@ -17,18 +17,23 @@ router.post('/', async (req, res) => {
         if (split[0] == 21) {
             scoreUn++;
         }
-        scoreDeux++;
+        else {
+            scoreDeux++;
+        }
     }
+
+
 
     postMatch.Result = scoreUn + ':' + scoreDeux;
 
-    postMatch.save((err, postMatch) => {
-        if (err) {
-            return res.status.json(error)
-        }
-        res.status(201).json(postMatch)
-    })
+    try {
+        const savedPost = await postMatch.save()
+        res.json(savedPost)
+    } catch (err) {
+        console.log({ message: err })
+    }
 })
+
 
 
 router.delete('/:id', async (req, res) => {
