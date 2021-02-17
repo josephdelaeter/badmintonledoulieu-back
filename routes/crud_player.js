@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Player = require('../models/player');
-let connect = require('../app');
 
 router.get('/', async (req, res) => {
     try {
-        const players = await Player.find().sort( { nbPoint : -1,differencePoints:-1 } )
+        const players = await Player.find().sort({ nbPoint: -1, differencePoints: -1 })
         res.json(players)
     } catch (err) {
         console.log(err)
@@ -13,17 +12,7 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-    const postPlayer = new Player({
-        nom: req.body.nom,
-        prenom: req.body.prenom,
-        nbMatch: req.body.nbMatch,
-        nbVictoire: req.body.nbVictoire,
-        nbDefaite: req.body.nbDefaite,
-        nbPoint: req.body.nbPoint,
-        pointPour: req.body.pointPour,
-        pointContre: req.body.pointContre,
-        differencePoints: req.body.differencePoints
-    });
+    const postPlayer = new Player(req.body);
     try {
         const savedPost = await postPlayer.save()
         res.json(savedPost)
@@ -53,7 +42,7 @@ router.delete('/:id', async (req, res) => {
 router.delete('/all', async (req, res) => {
     try {
         const removedAll = await Player.delete()
-        res.json(removedById)
+        res.json(removedAll)
     } catch (err) {
         res.json({ message: err })
     }
@@ -147,7 +136,13 @@ router.post('/:playerOne/:playerTwo/:scoreOne/:scoreTwo/:scoreThree', (req, res)
         findLooser, queryLooser, {}).exec()
 
 
-    res.json(updateWinner,updateLooser)
+/*
+    Player.updateMany(
+        findWinner, queryWinner, { multi: true }).exec()
+
+    Player.updateMany(
+        findLooser, queryLooser, { multi: true }).exec()
+*/
 })
 
 module.exports = router;
