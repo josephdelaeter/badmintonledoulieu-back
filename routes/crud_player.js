@@ -74,7 +74,7 @@ router.delete('/', (req, res) => {
 
 })
 
-router.post('/:playerOne/:playerTwo/:scoreOne/:scoreTwo/:scoreThree', (req, res) => {
+router.post('/:playerOne/:playerTwo/:scoreOne/:scoreTwo/:scoreThree', async(req, res) => {
     let cptPlayerOne = 0;
     let cptPlayerTwo = 0;
 
@@ -159,9 +159,12 @@ router.post('/:playerOne/:playerTwo/:scoreOne/:scoreTwo/:scoreThree', (req, res)
         }
     }
 
-        const updatedPlayer = Player.updateOne(
+        const updatedPlayer = await Player.updateOne(
             findWinner, queryWinner, { new: true }).exec()
-        response.json(updatedPlayer);
+        
+        const updatedLooser = await Player.updateOne(
+                findLooser, queryLooser, { new: true }).exec()    
+        response.json(201);
 
 });
 
