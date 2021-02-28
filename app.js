@@ -13,11 +13,12 @@ app.use(cors());
 //routes
 const PlayerRoute = require('./routes/crud_player');
 const MatchRoute = require('./routes/crud_match');
-const userRoutes = require('./routes/user')
+const userRoutes = require('./routes/crud_user')
 
 app.use('/player',PlayerRoute);
 app.use('/match', MatchRoute);
 app.use('/api/auth',userRoutes);
+
 
 //connect
 const connect = mongoose.connect(process.env.DB_CONNECTION, {
