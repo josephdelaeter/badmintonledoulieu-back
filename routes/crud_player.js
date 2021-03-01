@@ -159,12 +159,13 @@ router.post('/:playerOne/:playerTwo/:scoreOne/:scoreTwo/:scoreThree', async(req,
         }
     }
 
-        const updatedPlayer = await Player.updateOne(
-            findWinner, queryWinner, { new: true }).exec()
+        await Player.updateOne(
+            findWinner, queryLooser, { new: true }).exec()
         
-        const updatedLooser = await Player.updateOne(
-                findLooser, queryLooser, { new: true }).exec()    
-        response.json(201);
+        await Player.updateOne(
+                findLooser, queryWinner, { new: true }).exec()    
+        
+                response.json(201);
 
 });
 
