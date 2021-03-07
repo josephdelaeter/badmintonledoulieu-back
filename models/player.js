@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const Player = mongoose.Schema({
-    nom : {
+    lastName : {
         type:String,
         require:true
     },
-    prenom : {
+    firstName : {
         type:String,
         require:true
     },
@@ -13,11 +13,11 @@ const Player = mongoose.Schema({
         type: Number ,
         require:true
     },
-    nbVictoire : {
+    nbWin : {
         type: Number ,
         require:true
     },
-    nbDefaite : {
+    nbLoose : {
         type: Number ,
         require:true
     },
@@ -25,15 +25,15 @@ const Player = mongoose.Schema({
         type: Number ,
         require:true
     },
-    pointPour : {
+    pointFor : {
         type: Number ,
         require:true
     },
-    pointContre : {
+    pointAgainst : {
         type: Number ,
         require:true
     },
-    differencePoints : {
+    pointDifference : {
         type: Number ,
         require:true
     }
