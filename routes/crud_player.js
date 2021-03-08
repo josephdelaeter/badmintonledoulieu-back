@@ -89,31 +89,36 @@ router.post(
 
     console.log("Score: " + scoreOne + " " + scoreTwo + " " + scoreThree);
     //OK
-    if (scoreOne[0] > scoreOne[1]) {
-      cptPlayerOne++;
+    if (scoreOne[0] != scoreOne[1]) {
+      if (scoreOne[0] > scoreOne[1]) {
+        cptPlayerOne++;
+      }
+      if (scoreOne[1] > scoreOne[0]) {
+        cptPlayerTwo++;
+      }
     }
-    if (scoreOne[1] > scoreOne[0]) {
-      cptPlayerTwo++;
-    }
-
     console.log(cptPlayerOne + " " + cptPlayerTwo);
-
-    if (scoreTwo[0] > scoreTwo[1]) {
-      cptPlayerOne++;
+    //OK
+    if (scoreOne[0] != scoreOne[1]) {
+      if (scoreTwo[0] > scoreTwo[1]) {
+        cptPlayerOne++;
+      }
+      if (scoreTwo[1] > scoreTwo[0]) {
+        cptPlayerTwo++;
+      }
     }
-    if (scoreTwo[1] > scoreTwo[0]) {
-      cptPlayerTwo++;
-    }
-
     console.log(cptPlayerOne + " " + cptPlayerTwo);
     //OK
 
-    console.log(scoreThree[0] + scoreThree[1])
-    if (scoreThree[1] > scoreThree[0]) {
-      cptPlayerOne++;
-    }
-    if (scoreThree[0] > scoreThree[1]) {
-      cptPlayerTwo++;
+    console.log(scoreThree[0] + scoreThree[1]);
+    //OK
+    if (scoreOne[0] != scoreOne[1]) {
+        if (scoreThree[1] > scoreThree[0]) {
+            cptPlayerOne++;
+          }
+          if (scoreThree[0] > scoreThree[1]) {
+            cptPlayerTwo++;
+          }
     }
     console.log(cptPlayerOne + " " + cptPlayerTwo);
 
